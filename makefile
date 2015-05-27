@@ -1,7 +1,7 @@
 #Makefile for the 2048 clone.
 
-CC = gcc
-CFLAGS = -Wall -static
+CC = tcc
+CFLAGS = -Wall -static -Os
 all : 2048 player
 
 2048 : 2048.c
