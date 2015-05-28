@@ -1,6 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#define COUNT 16777213
+
 int main(int argc, char** argv)
 {
 	srand((unsigned)time(NULL));
@@ -28,8 +30,8 @@ int main(int argc, char** argv)
 			break;
 		}
 		putchar(c);
+		putchar('\n');
 		
-		for(int j=0;j<=16777216;j++)
-			;
+		for (i=0; i<COUNT; i++);
 	}
 }
