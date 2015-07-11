@@ -3,6 +3,11 @@
 #define FIELD_SIZE 4
 #define CRFLD field[i][j]
 
+#define UP 'v'
+#define LEFT 'u'
+#define DOWN 'i'
+#define RIGHT 'a'
+
 int shifted;
 int field [FIELD_SIZE][FIELD_SIZE];
 
@@ -26,9 +31,6 @@ int main()
 	int ended=0;
 	do
 	{
-		if(ended)
-			while(c=getchar()!='\n')
-				;
 		init();
 		display_field();
 
@@ -91,7 +93,7 @@ void fill_free(void)
 void display_field(void)
 {
 	int i,j;
-	
+
 	system("clear");
 
 	for(i=0;i<FIELD_SIZE;i++)
@@ -311,15 +313,13 @@ void shift_right(void)
 
 void shift_numbers(char c)
 {
-	int i,j;
-
-	if(c=='i')
+	if(c==DOWN)
 		shift_down();
-	if(c=='v')
+	if(c==UP)
 		shift_up();
-	if(c=='u')
+	if(c==LEFT)
 		shift_left();
-	if(c=='a')
+	if(c==RIGHT)
 		shift_right();
 }
 
