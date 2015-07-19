@@ -1,3 +1,1 @@
--clean the code
--write a short documentation
--write a good makefile
+-unify shift_(up|down|left|right) into one single function. this would shorten the code dramatically.

@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 #define FIELD_SIZE 4
-#define CRFLD field[i][j]
+#define CRTFIELD field[i][j]
 
 #define UP 'v'
 #define LEFT 'u'
@@ -69,7 +69,6 @@ void init(void)
 			field [i][j]=0;
 
 	fill_free();
-	fill_free();
 }
 
 void fill_free(void)
@@ -79,7 +78,7 @@ void fill_free(void)
 	i=rand()%FIELD_SIZE;
 	j=rand()%FIELD_SIZE;
 
-	while(CRFLD!=0)
+	while(CRTFIELD!=0)
 	{
 		i=rand()%FIELD_SIZE;
 		j=rand()%FIELD_SIZE;
@@ -87,7 +86,7 @@ void fill_free(void)
 
 	z=rand()%4;
 
-	CRFLD=(z==0 ? 4 : 2);
+	CRTFIELD=(z==0 ? 4 : 2);
 }
 
 void display_field(void)
@@ -100,10 +99,10 @@ void display_field(void)
 	{
 		for(j=0;j<FIELD_SIZE;j++)
 		{
-			if(CRFLD==0)
+			if(CRTFIELD==0)
 				putchar('\t');
 			else
-				printf("%i\t",CRFLD);
+				printf("%i\t",CRTFIELD);
 		}
 		putchar('\n');
 	}
@@ -330,9 +329,9 @@ int game_over(void)
 	for(i=0;i<FIELD_SIZE;i++)
 		for(j=0;j<FIELD_SIZE;j++)
 		{
-			if(CRFLD==2048)
+			if(CRTFIELD==2048)
 				return -1;
-			if(CRFLD==0||has_neighbours(i,j)==1)
+			if(CRTFIELD==0||has_neighbours(i,j)==1)
 				return 0;
 		}
 	return 1;
@@ -340,22 +339,22 @@ int game_over(void)
 
 int has_neighbours(int i,int j)
 {
-	if(CRFLD==0)
+	if(CRTFIELD==0)
 	{
 		return 0;
 	}
 
-	if(i==0&&field[i+1][j]==CRFLD)
+	if(i==0&&field[i+1][j]==CRTFIELD)
 		return 1;
-	if(i==FIELD_SIZE-1&&field[i-1][j]==CRFLD)
+	if(i==FIELD_SIZE-1&&field[i-1][j]==CRTFIELD)
 		return 1;
-	if(i>0&&i<FIELD_SIZE-1&&(field[i+1][j]==CRFLD||field[i-1][j]==CRFLD))
+	if(i>0&&i<FIELD_SIZE-1&&(field[i+1][j]==CRTFIELD||field[i-1][j]==CRTFIELD))
 		return 1;
-	if(j==0&&field[i][j+1]==CRFLD)
+	if(j==0&&field[i][j+1]==CRTFIELD)
 		return 1;
-	if(j==FIELD_SIZE-1&&field[i][j-1]==CRFLD)
+	if(j==FIELD_SIZE-1&&field[i][j-1]==CRTFIELD)
 		return 1;
-	if(j>0&&j<FIELD_SIZE-1&&(field[i][j+1]==CRFLD||field[i][j-1]==CRFLD))
+	if(j>0&&j<FIELD_SIZE-1&&(field[i][j+1]==CRTFIELD||field[i][j-1]==CRTFIELD))
 		return 1;
 	return 0;
 }
