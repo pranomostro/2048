@@ -1,11 +1,17 @@
-#Makefile for the 2048 clone.
+#Makefile for the ${TARGET} clone.
 
-CC = tcc
-CFLAGS = -Wall -static -Os
-all : 2048
+PREFIX = /usr
+TARGET = 2048
+SRC = ${TARGET}.c
 
-2048 : 2048.c
-	$(CC) $(CCFLAGS) 2048.c -o 2048
+CC = gcc
+CFLAGS = -Wall -W -Wextra -fexpensive-optimizations\
+-funroll-loops -fno-builtin -s -std=c89 -Os -O3
 
-clean : 2048
-	rm -rf 2048
+all : ${TARGET}
+
+${TARGET} : ${SRC}
+	${CC} ${CCFLAGS} ${SRC} -o ${TARGET}
+
+clean : ${TARGET}
+	rm -rf ${TARGET}
