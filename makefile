@@ -8,10 +8,18 @@ CC = gcc
 CFLAGS = -Wall -W -Wextra -fexpensive-optimizations\
 -funroll-loops -fno-builtin -s -std=c89 -Os -O3
 
-all : ${TARGET}
+all: ${TARGET}
 
-${TARGET} : ${SRC}
+${TARGET}: ${SRC}
 	${CC} ${CCFLAGS} ${SRC} -o ${TARGET}
 
-clean : ${TARGET}
+clean: ${TARGET}
 	rm -rf ${TARGET}
+
+install: all
+	cp ${TARGET} ${PREFIX}/bin
+	cp ${TARGET}.1 ${PREFIX}/share/man/man1
+
+uninstall:
+	rm -f ${PREFIX}/bin/${TARGET}
+	rm -f ${PREFIX/share/man/man1/${TARGET}.1
