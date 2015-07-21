@@ -1,4 +1,4 @@
-#Makefile for the ${TARGET} clone.
+#Makefile for a 2048 clone.
 
 PREFIX = /usr
 TARGET = 2048
@@ -13,7 +13,7 @@ all: ${TARGET}
 ${TARGET}: ${SRC}
 	${CC} ${CCFLAGS} ${SRC} -o ${TARGET}
 
-clean: ${TARGET}
+clean:
 	rm -rf ${TARGET}
 
 install: all
