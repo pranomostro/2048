@@ -2,8 +2,6 @@
 #include <stdio.h>
 #include <errno.h>
 
-#define NOTYET -1
-
 void shift(int* line);
 
 int main(void)
@@ -22,19 +20,14 @@ int main(void)
 
 void shift(int* line)
 {
-	int i, j, add=0, lastpos=NOTYET;
-
-	for(i=0;i<=3;i++)
-		if(line[i]&&lastpos!=NOTYET)
-			line[lastpos]=line[i], lastpos++,line[i]=0;
-		else if(line[i]==0&&lastpos==NOTYET)
-			lastpos=i;
+	int i, j;
 
 	for(i=0;i<=2;i++)
-		for(j=i;j<=2;j++)
+		for(j=i+1;j<=3;j++)
 		{
-			if(line[j]==line[j+1]&&line[j]&&add==0)
-				line[j]+=line[j+1], line[j+1]=0, add=1;
-			add=0;
+			if(line[i]==line[i+1]&&line[i]!=0)
+				line[i]+=line[i+1], line[i+1]=0;
+			if(line[i]==0&&line[j]!=0)
+				line[i]=line[j], line[j]=0;
 		}
 }
