@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <errno.h>
 
+#define FLDSIZE 4
+
 void shift(int* line);
 
 int main(void)
@@ -20,14 +22,22 @@ int main(void)
 
 void shift(int* line)
 {
-	int i, j;
+	int i,j;
 
-	for(i=0;i<=2;i++)
-		for(j=i+1;j<=3;j++)
-		{
-			if(line[i]==line[i+1]&&line[i]!=0)
-				line[i]+=line[i+1], line[i+1]=0;
-			if(line[i]==0&&line[j]!=0)
-				line[i]=line[j], line[j]=0;
-		}
+	for(i=0;i<=FLDSIZE-2;i++)
+		for(j=i+1;j<=FLDSIZE-1;j++)
+			if(line[i]==line[j])
+			{
+				line[i]+=line[j], line[j]=0;
+				break;
+			}
+			else if(line[j]!=0||line[i]==0)
+				break;
+	for(i=-1;i<=FLDSIZE-2;i++)
+		for(j=i+1;j<=FLDSIZE-1&&line[i+1]==0;j++)
+			if(line[j]!=0)
+			{
+				line[i+1]=line[j];line[j]=0;
+				break;
+			}
 }
