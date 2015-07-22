@@ -23,6 +23,7 @@ void shift_left(void);
 void shift_right(void);
 
 void shift_numbers(char c);
+void shift(int* line);
 
 int game_over(void);
 int has_neighbours(int i,int j);
@@ -141,21 +142,40 @@ int game_over(void)
 int has_neighbours(int i,int j)
 {
 	if(CRTFIELD==0)
-	{
 		return 0;
-	}
 
-	if(i==0&&field[i+1][j]==CRTFIELD)
-		return 1;
-	if(i==FIELD_SIZE-1&&field[i-1][j]==CRTFIELD)
-		return 1;
-	if(i>0&&i<FIELD_SIZE-1&&(field[i+1][j]==CRTFIELD||field[i-1][j]==CRTFIELD))
-		return 1;
-	if(j==0&&field[i][j+1]==CRTFIELD)
-		return 1;
-	if(j==FIELD_SIZE-1&&field[i][j-1]==CRTFIELD)
-		return 1;
-	if(j>0&&j<FIELD_SIZE-1&&(field[i][j+1]==CRTFIELD||field[i][j-1]==CRTFIELD))
+	if((i==0&&field[i+1][j]==CRTFIELD)
+	  ||(i==FIELD_SIZE-1&&field[i-1][j]==CRTFIELD)
+	  ||
+	  ((i>0&&i<FIELD_SIZE-1)
+	  &&(field[i+1][j]==CRTFIELD||field[i-1][j]==CRTFIELD))
+	  ||(j==0&&field[i][j+1]==CRTFIELD)
+	  ||(j==FIELD_SIZE-1&&field[i][j-1]==CRTFIELD)
+	  ||(j>0&&j<FIELD_SIZE-1&&field[i][j+1]==CRTFIELD)
+	  ||(field[i][j-1]==CRTFIELD)))
 		return 1;
 	return 0;
+}
+
+void shift(int* line)
+{
+	int i,j;
+
+	for(i=0;i<=FIELD_SIZE-2;i++)
+		for(j=i+1;j<=FIELD_SIZE-1;j++)
+			if(line[i]==line[j])
+			{
+				line[i]+=line[j], line[j]=0;
+				break;
+			}
+			else if(line[j]!=0||line[i]==0)
+				break;
+
+	for(i=-1;i<=FIELD_SIZE-2;i++)
+		for(j=i+1;j<=FIELD_SIZE-1&&line[i+1]==0;j++)
+			if(line[j]!=0)
+			{
+				line[i+1]=line[j];line[j]=0;
+				break;
+			}
 }
