@@ -26,7 +26,7 @@ void shift_numbers(char c);
 void shift(int* line);
 
 int game_over(void);
-int has_neighbours(int i,int j);
+int has_neighbours(int i, int j);
 
 int main()
 {
@@ -56,7 +56,7 @@ int main()
 
 void init(void)
 {
-	int i,j;
+	int i, j;
 
 	shifted=1;
 
@@ -71,7 +71,7 @@ void init(void)
 
 void fill_free(void)
 {
-	int i,j,z;
+	int i, j, z;
 
 	i=rand()%FIELD_SIZE;
 	j=rand()%FIELD_SIZE;
@@ -89,7 +89,7 @@ void fill_free(void)
 
 void display_field(void)
 {
-	int i,j;
+	int i, j;
 
 	system("clear");
 
@@ -100,7 +100,7 @@ void display_field(void)
 			if(CRTFIELD==0)
 				putchar('\t');
 			else
-				printf("%i\t",CRTFIELD);
+				printf("%i\t", CRTFIELD);
 		}
 		putchar('\n');
 	}
@@ -126,20 +126,20 @@ void shift_numbers(char c)
 
 int game_over(void)
 {
-	int i,j;
+	int i, j;
 
 	for(i=0;i<FIELD_SIZE;i++)
 		for(j=0;j<FIELD_SIZE;j++)
 		{
 			if(CRTFIELD==2048)
 				return -1;
-			if(CRTFIELD==0||has_neighbours(i,j)==1)
+			if(CRTFIELD==0||has_neighbours(i, j)==1)
 				return 0;
 		}
 	return 1;
 }
 
-int has_neighbours(int i,int j)
+int has_neighbours(int i, int j)
 {
 	if(CRTFIELD==0)
 		return 0;
@@ -159,7 +159,7 @@ int has_neighbours(int i,int j)
 
 void shift(int* line)
 {
-	int i,j;
+	int i, j;
 
 	for(i=0;i<=FIELD_SIZE-2;i++)
 		for(j=i+1;j<=FIELD_SIZE-1;j++)
