@@ -25,15 +25,12 @@ int has_neighbours(int i, int j);
 
 int main(void)
 {
-	char c;
-
 	init();
 	display_field();
 
-	while(game_over()==0)
+	do
 	{
-		c=getchar();
-		shift_numbers(c);
+		shift_numbers(getchar());
 
 		if(shifted)
 			fill_free();
@@ -41,7 +38,7 @@ int main(void)
 		display_field();
 
 		shifted=0;
-	}
+	}while(game_over()==0)
 
 	printf("Game over.\n");
 	printf("%s\n", game_over()==-1 ? "You won." : "You lost.");
@@ -66,25 +63,24 @@ void init(void)
 
 void fill_free(void)
 {
-	int i, j, z;
+	int i, j;
 
-	i=rand()%FIELD_SIZE;
-	j=rand()%FIELD_SIZE;
-
-	while(CRTFIELD!=0)
+	do
 	{
 		i=rand()%FIELD_SIZE;
 		j=rand()%FIELD_SIZE;
-	}
+	}while(CRTFIELD!=0)
 
-	z=rand()%4;
-
-	CRTFIELD=(z==0 ? 4 : 2);
+	CRTFIELD=((rand()%4)==0 ? 4 : 2);
 }
 
 void display_field(void)
 {
 	int i, j;
+
+/*TODO: do not do this, find a better way, probably with
+just printing a lot of newlines and then displaying the
+field at the bottom*/
 
 	system("clear");
 
