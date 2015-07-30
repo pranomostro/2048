@@ -4,11 +4,6 @@
 
 #define FIELD_SIZE 4
 
-#define UP 'v'
-#define LEFT 'u'
-#define DOWN 'i'
-#define RIGHT 'a'
-
 int shifted;
 int field [FIELD_SIZE][FIELD_SIZE];
 
@@ -105,24 +100,24 @@ void shift_numbers(char c)
 	for(i=0;i<FIELD_SIZE;i++)
 		switch(c)
 		{
-		case LEFT:
+		case 'a':
 			shift(field[i]);
 			break;
-		case RIGHT:
+		case 'd':
 			for(j=FIELD_SIZE-1;j>=0;j--)
 				line[FIELD_SIZE-1-j]=field[i][j];
 			shift(line);
 			for(j=FIELD_SIZE-1;j>=0;j--)
 				field[i][j]=line[FIELD_SIZE-1-j];
 			break;
-		case DOWN:
+		case 's':
 			for(j=FIELD_SIZE-1;j>=0;j--)
 				line[FIELD_SIZE-1-j]=field[j][i];
 			shift(line);
 			for(j=FIELD_SIZE-1;j>=0;j--)
 				field[j][i]=line[FIELD_SIZE-1-j];
 			break;
-		case UP:
+		case 'w':
 			for(j=0;j<=FIELD_SIZE-1;j++)
 				line[j]=field[j][i];
 			shift(line);
@@ -154,7 +149,6 @@ void shift(int* line)
 				break;
 			}
 }
-
 
 int game_over(void)
 {
