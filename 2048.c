@@ -38,7 +38,7 @@ int main(void)
 		display_field();
 
 		shifted=0;
-	}while(game_over()==0)
+	}while(game_over()==0);
 
 	printf("Game over.\n");
 	printf("%s\n", game_over()==-1 ? "You won." : "You lost.");
@@ -69,7 +69,7 @@ void fill_free(void)
 	{
 		i=rand()%FIELD_SIZE;
 		j=rand()%FIELD_SIZE;
-	}while(CRTFIELD!=0)
+	}while(CRTFIELD!=0);
 
 	CRTFIELD=((rand()%4)==0 ? 4 : 2);
 }
@@ -100,19 +100,25 @@ field at the bottom*/
 
 void shift_numbers(char c)
 {
-	switch(c)
-	{
-	case DOWN:
-		break;
-	case UP:
-		break;
-	case LEFT:
-		break;
-	case RIGHT:
-		break;
-	default:
-		break;
-	}
+	int i,j;
+	int line[FIELD_SIZE];
+
+	for(i=0;i<FIELD_SIZE;i++)
+		switch(c)
+		{
+		case LEFT:
+			shift(field[i]);
+			break;
+		case RIGHT:
+			for(j=FIELD_SIZE-1;j>=0;j--)
+				line[FIELD_SIZE-1-j]=field[i][j];
+			shift(line);
+			for(j=FIELD_SIZE-1;j>=0;j--)
+				field[i][j]=line[FIELD_SIZE-1-j];
+			break;
+		default:
+			break;
+		}
 }
 
 void shift(int* line)
