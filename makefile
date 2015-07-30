@@ -10,7 +10,7 @@ CFLAGS = -Wall -W -Wextra -fexpensive-optimizations\
 
 all: ${TARGET}
 
-${TARGET}: ${SRC}
+${TARGET}: ${SRC} config.h
 	${CC} ${CCFLAGS} ${SRC} -o ${TARGET}
 
 clean:

@@ -3,12 +3,12 @@
 	after every change of the configuration a recompile is needed.
 */
 
-const int FIELD_SIZE=4
+#define FIELD_SIZE 4
 
 enum keys
 {
 	UP='v',
 	LEFT='u',
 	DOWN='i',
-	RIGHT='e'
+	RIGHT='a'
 };
