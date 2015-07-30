@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define FIELD_SIZE 4
+#include "config.h"
 
 int shifted;
 int field [FIELD_SIZE][FIELD_SIZE];
@@ -100,24 +100,24 @@ void shift_numbers(char c)
 	for(i=0;i<FIELD_SIZE;i++)
 		switch(c)
 		{
-		case 'a':
+		case LEFT:
 			shift(field[i]);
 			break;
-		case 'd':
+		case RIGHT:
 			for(j=FIELD_SIZE-1;j>=0;j--)
 				line[FIELD_SIZE-1-j]=field[i][j];
 			shift(line);
 			for(j=FIELD_SIZE-1;j>=0;j--)
 				field[i][j]=line[FIELD_SIZE-1-j];
 			break;
-		case 's':
+		case DOWN:
 			for(j=FIELD_SIZE-1;j>=0;j--)
 				line[FIELD_SIZE-1-j]=field[j][i];
 			shift(line);
 			for(j=FIELD_SIZE-1;j>=0;j--)
 				field[j][i]=line[FIELD_SIZE-1-j];
 			break;
-		case 'w':
+		case UP:
 			for(j=0;j<=FIELD_SIZE-1;j++)
 				line[j]=field[j][i];
 			shift(line);
