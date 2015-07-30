@@ -48,8 +48,8 @@ void init(void)
 
 	srand((unsigned)time(NULL));
 
-	for(i=0;i<FIELD_SIZE;i++)
-		for(j=0;j<FIELD_SIZE;j++)
+	for(i=0; i<FIELD_SIZE; i++)
+		for(j=0; j<FIELD_SIZE; j++)
 			field [i][j]=0;
 
 	fill_free();
@@ -78,9 +78,9 @@ field at the bottom*/
 
 	system("clear");
 
-	for(i=0;i<FIELD_SIZE;i++)
+	for(i=0; i<FIELD_SIZE; i++)
 	{
-		for(j=0;j<FIELD_SIZE;j++)
+		for(j=0; j<FIELD_SIZE; j++)
 		{
 			if(field[i][j]==0)
 				putchar('\t');
@@ -97,31 +97,31 @@ void shift_numbers(char c)
 	int i,j;
 	int line[FIELD_SIZE];
 
-	for(i=0;i<FIELD_SIZE;i++)
+	for(i=0; i<FIELD_SIZE; i++)
 		switch(c)
 		{
 		case LEFT:
 			shift(field[i]);
 			break;
 		case RIGHT:
-			for(j=FIELD_SIZE-1;j>=0;j--)
+			for(j=FIELD_SIZE-1; j>=0; j--)
 				line[FIELD_SIZE-1-j]=field[i][j];
 			shift(line);
-			for(j=FIELD_SIZE-1;j>=0;j--)
+			for(j=FIELD_SIZE-1; j>=0; j--)
 				field[i][j]=line[FIELD_SIZE-1-j];
 			break;
 		case DOWN:
-			for(j=FIELD_SIZE-1;j>=0;j--)
+			for(j=FIELD_SIZE-1; j>=0; j--)
 				line[FIELD_SIZE-1-j]=field[j][i];
 			shift(line);
-			for(j=FIELD_SIZE-1;j>=0;j--)
+			for(j=FIELD_SIZE-1; j>=0; j--)
 				field[j][i]=line[FIELD_SIZE-1-j];
 			break;
 		case UP:
-			for(j=0;j<=FIELD_SIZE-1;j++)
+			for(j=0; j<=FIELD_SIZE-1; j++)
 				line[j]=field[j][i];
 			shift(line);
-			for(j=0;j<=FIELD_SIZE-1;j++)
+			for(j=0; j<=FIELD_SIZE-1; j++)
 				field[j][i]=line[j];
 			break;
 		}
@@ -131,21 +131,21 @@ void shift(int* line)
 {
 	int i, j;
 
-	for(i=0;i<=FIELD_SIZE-2;i++)
-		for(j=i+1;j<=FIELD_SIZE-1;j++)
+	for(i=0; i<=FIELD_SIZE-2; i++)
+		for(j=i+1; j<=FIELD_SIZE-1; j++)
 			if(line[i]==line[j])
 			{
-				line[i]+=line[j], line[j]=0;shifted=1;
+				line[i]+=line[j], line[j]=0; shifted=1;
 				break;
 			}
 			else if(line[j]!=0||line[i]==0)
 				break;
 
-	for(i=-1;i<=FIELD_SIZE-2;i++)
-		for(j=i+1;j<=FIELD_SIZE-1&&line[i+1]==0;j++)
+	for(i=-1; i<=FIELD_SIZE-2; i++)
+		for(j=i+1; j<=FIELD_SIZE-1&&line[i+1]==0; j++)
 			if(line[j]!=0)
 			{
-				line[i+1]=line[j];line[j]=0;shifted=1;
+				line[i+1]=line[j]; line[j]=0; shifted=1;
 				break;
 			}
 }
@@ -154,8 +154,8 @@ int game_over(void)
 {
 	int i, j;
 
-	for(i=0;i<FIELD_SIZE;i++)
-		for(j=0;j<FIELD_SIZE;j++)
+	for(i=0; i<FIELD_SIZE; i++)
+		for(j=0; j<FIELD_SIZE; j++)
 		{
 			if(field[i][j]==2048)
 				return -1;
