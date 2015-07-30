@@ -116,7 +116,19 @@ void shift_numbers(char c)
 			for(j=FIELD_SIZE-1;j>=0;j--)
 				field[i][j]=line[FIELD_SIZE-1-j];
 			break;
-		default:
+		case DOWN:
+			for(j=FIELD_SIZE-1;j>=0;j--)
+				line[FIELD_SIZE-1-j]=field[j][i];
+			shift(line);
+			for(j=FIELD_SIZE-1;j>=0;j--)
+				field[j][i]=line[FIELD_SIZE-1-j];
+			break;
+		case UP:
+			for(j=0;j<=FIELD_SIZE-1;j++)
+				line[j]=field[j][i];
+			shift(line);
+			for(j=0;j<=FIELD_SIZE-1;j++)
+				field[j][i]=line[j];
 			break;
 		}
 }

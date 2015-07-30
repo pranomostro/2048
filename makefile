@@ -22,4 +22,4 @@ install: all
 
 uninstall:
 	rm -f ${PREFIX}/bin/${TARGET}
-	rm -f ${PREFIX/share/man/man1/${TARGET}.1
+	rm -f ${PREFIX}/share/man/man1/${TARGET}.1
