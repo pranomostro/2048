@@ -3,7 +3,6 @@
 #include <time.h>
 
 #define FIELD_SIZE 4
-#define CRTFIELD field[i][j]
 
 #define UP 'v'
 #define LEFT 'u'
@@ -69,9 +68,9 @@ void fill_free(void)
 	{
 		i=rand()%FIELD_SIZE;
 		j=rand()%FIELD_SIZE;
-	}while(CRTFIELD!=0);
+	}while(field[i][j]!=0);
 
-	CRTFIELD=((rand()%4)==0 ? 4 : 2);
+	field[i][j]=((rand()%4)==0 ? 4 : 2);
 }
 
 void display_field(void)
@@ -88,10 +87,10 @@ field at the bottom*/
 	{
 		for(j=0;j<FIELD_SIZE;j++)
 		{
-			if(CRTFIELD==0)
+			if(field[i][j]==0)
 				putchar('\t');
 			else
-				printf("%i\t", CRTFIELD);
+				printf("%i\t", field[i][j]);
 		}
 		putchar('\n');
 	}
@@ -164,9 +163,9 @@ int game_over(void)
 	for(i=0;i<FIELD_SIZE;i++)
 		for(j=0;j<FIELD_SIZE;j++)
 		{
-			if(CRTFIELD==2048)
+			if(field[i][j]==2048)
 				return -1;
-			if(CRTFIELD==0||has_neighbours(i, j)==1)
+			if(field[i][j]==0||has_neighbours(i, j)==1)
 				return 0;
 		}
 	return 1;
@@ -174,18 +173,18 @@ int game_over(void)
 
 int has_neighbours(int i, int j)
 {
-	if(CRTFIELD==0)
+	if(field[i][j]==0)
 		return 0;
 
-	if((i==0&&field[i+1][j]==CRTFIELD)
-	  ||(i==FIELD_SIZE-1&&field[i-1][j]==CRTFIELD)
+	if((i==0&&field[i+1][j]==field[i][j])
+	  ||(i==FIELD_SIZE-1&&field[i-1][j]==field[i][j])
 	  ||
 	  ((i>0&&i<FIELD_SIZE-1)
-	  &&(field[i+1][j]==CRTFIELD||field[i-1][j]==CRTFIELD))
-	  ||(j==0&&field[i][j+1]==CRTFIELD)
-	  ||(j==FIELD_SIZE-1&&field[i][j-1]==CRTFIELD)
-	  ||(j>0&&j<FIELD_SIZE-1&&field[i][j+1]==CRTFIELD)
-	  ||(field[i][j-1]==CRTFIELD))
+	  &&(field[i+1][j]==field[i][j]||field[i-1][j]==field[i][j]))
+	  ||(j==0&&field[i][j+1]==field[i][j])
+	  ||(j==FIELD_SIZE-1&&field[i][j-1]==field[i][j])
+	  ||(j>0&&j<FIELD_SIZE-1&&field[i][j+1]==field[i][j])
+	  ||(field[i][j-1]==field[i][j]))
 		return 1;
 	return 0;
 }
