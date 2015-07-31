@@ -34,8 +34,7 @@ int main(void)
 		shifted=0;
 	}while(game_over()==0);
 
-	printf("Game over.\n");
-	printf("%s\n", game_over()==-1 ? "You won." : "You lost.");
+	printf("Game over, %s\n", game_over()==-1 ? "You won." : "You lost.");
 
 	return 0;
 }
@@ -167,18 +166,12 @@ int game_over(void)
 
 int has_neighbours(int i, int j)
 {
-	if(field[i][j]==0)
-		return 0;
-
-	if((i==0&&field[i+1][j]==field[i][j])
-	  ||(i==FIELD_SIZE-1&&field[i-1][j]==field[i][j])
-	  ||
-	  ((i>0&&i<FIELD_SIZE-1)
-	  &&(field[i+1][j]==field[i][j]||field[i-1][j]==field[i][j]))
-	  ||(j==0&&field[i][j+1]==field[i][j])
-	  ||(j==FIELD_SIZE-1&&field[i][j-1]==field[i][j])
-	  ||(j>0&&j<FIELD_SIZE-1&&field[i][j+1]==field[i][j])
-	  ||(field[i][j-1]==field[i][j]))
-		return 1;
+	if(i==0&&field[i+1][j]==field[i][j]
+	||i==FIELD_SIZE-1&&field[i-1][j]==field[i][j]
+	||i>0&&i<FIELD_SIZE-1&&(field[i+1][j]==field[i][j]||field[i-1][j]==field[i][j])
+	||j==0&&field[i][j+1]==field[i][j]
+	||j==FIELD_SIZE-1&&field[i][j-1]==field[i][j]
+	||j>0&&j<FIELD_SIZE-1&&(field[i][j+1]==field[i][j]||field[i][j-1]==field[i][j]))
+	return 1;
 	return 0;
 }
