@@ -5,6 +5,8 @@
 
 #define FIELD_SIZE 4
 
+char* CLEAR="clear";
+
 enum keys
 {
 	UP='v',

@@ -71,11 +71,7 @@ void display_field(void)
 {
 	int i, j;
 
-/*TODO: do not do this, find a better way, probably with
-just printing a lot of newlines and then displaying the
-field at the bottom*/
-
-	system("clear");
+	system(CLEAR);
 
 	for(i=0; i<FIELD_SIZE; i++)
 	{
