@@ -1,6 +1,6 @@
 #Makefile for a 2048 clone.
 
-PREFIX = /usr
+PREFIX = /usr/local
 TARGET = 2048
 SRC = ${TARGET}.c
 
