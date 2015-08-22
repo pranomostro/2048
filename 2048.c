@@ -34,7 +34,7 @@ int main(void)
 		shifted=0;
 	}while(game_over()==0);
 
-	printf("Game over, %s\n", game_over()==-1 ? "You won." : "You lost.");
+	printf("Game over, %s\n", game_over()==-1 ? "you won." : "you lost.");
 
 	return 0;
 }
