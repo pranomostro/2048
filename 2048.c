@@ -32,9 +32,10 @@ int main(void)
 		display_field();
 
 		shifted=0;
-	}while(game_over()==0);
+	}
+	while(game_over()==0);
 
-	printf("Game over, %s\n", game_over()==-1 ? "you won." : "you lost.");
+	printf("Game over, %s\n", game_over()==-1?"you won.":"you lost.");
 
 	return 0;
 }
@@ -62,16 +63,23 @@ void fill_free(void)
 	{
 		i=rand()%FIELD_SIZE;
 		j=rand()%FIELD_SIZE;
-	}while(field[i][j]!=0);
+	}
+	while(field[i][j]!=0);
 
 	field[i][j]=((rand()%4)==0 ? 4 : 2);
 }
 
 void display_field(void)
 {
-	int i, j;
+	int i, j, errval;
 
-	system(CLEAR);
+	errval=system(CLEAR);
+
+	if(errval!=0)
+	{
+		fprintf(stderr, "error: could not execute shell command %s, exiting.\n", CLEAR);
+		exit(1);
+	}
 
 	for(i=0; i<FIELD_SIZE; i++)
 	{
@@ -162,12 +170,12 @@ int game_over(void)
 
 int has_neighbours(int i, int j)
 {
-	if(i==0&&field[i+1][j]==field[i][j]
-	||i==FIELD_SIZE-1&&field[i-1][j]==field[i][j]
-	||i>0&&i<FIELD_SIZE-1&&(field[i+1][j]==field[i][j]||field[i-1][j]==field[i][j])
-	||j==0&&field[i][j+1]==field[i][j]
-	||j==FIELD_SIZE-1&&field[i][j-1]==field[i][j]
-	||j>0&&j<FIELD_SIZE-1&&(field[i][j+1]==field[i][j]||field[i][j-1]==field[i][j]))
-	return 1;
+	if((i==0&&field[i+1][j]==field[i][j])
+	||(i==FIELD_SIZE-1&&field[i-1][j]==field[i][j])
+	||(i>0&&i<FIELD_SIZE-1&&(field[i+1][j]==field[i][j]||field[i-1][j]==field[i][j]))
+	||(j==0&&field[i][j+1]==field[i][j])
+	||(j==FIELD_SIZE-1&&field[i][j-1]==field[i][j])
+	||(j>0&&j<FIELD_SIZE-1&&(field[i][j+1]==field[i][j]||field[i][j-1]==field[i][j])))
+		return 1;
 	return 0;
 }

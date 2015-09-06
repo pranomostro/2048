@@ -5,13 +5,13 @@ TARGET = 2048
 SRC = ${TARGET}.c
 
 CC = gcc
-CFLAGS = -Wall -W -Wextra -fexpensive-optimizations\
--funroll-loops -fno-builtin -s -std=c89 -Os -O3
+CFLAGS = -Wall -Wextra -fexpensive-optimizations\
+-funroll-loops -fno-builtin -s -std=c89 -Os -O3 -static
 
 all: ${TARGET}
 
 ${TARGET}: ${SRC} config.h
-	${CC} ${CCFLAGS} ${SRC} -o ${TARGET}
+	${CC} ${CFLAGS} ${SRC} -o ${TARGET}
 
 clean:
 	rm -rf ${TARGET}
