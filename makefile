@@ -5,8 +5,7 @@ TARGET = 2048
 SRC = ${TARGET}.c
 
 CC = gcc
-CFLAGS = -Wall -Wextra -fexpensive-optimizations\
--funroll-loops -fno-builtin -s -std=c89 -Os -O3
+CFLAGS = -Wall -std=c99 -pedantic
 
 all: ${TARGET}
 
