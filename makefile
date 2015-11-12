@@ -4,7 +4,7 @@ PREFIX = /usr/local
 TARGET = 2048
 
 CC = gcc
-CFLAGS = -Wall -std=c99 -pedantic
+CFLAGS = -Wall -std=c89 -pedantic
 LIBS =
 
 all: ${TARGET}
