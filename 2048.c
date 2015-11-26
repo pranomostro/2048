@@ -24,14 +24,13 @@ int main(void)
 
 	do
 	{
+		shifted=0;
 		shift_numbers(getchar());
 
 		if(shifted)
 			fill_free();
 
 		display_field();
-
-		shifted=0;
 	}
 	while(game_over()==0);
 
@@ -43,8 +42,6 @@ int main(void)
 void init(void)
 {
 	int i, j;
-
-	shifted=1;
 
 	srand((unsigned)time(NULL));
 
