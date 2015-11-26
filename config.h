@@ -5,8 +5,13 @@
 
 #define FIELD_SIZE 4
 
+/*
+	The command for clearing the terminal window.
+	This depends on you OS, of course
+*/
 char* CLEAR="clear";
 
+/* Keys for moving the tiles. */
 enum keys
 {
 	UP='v',
