@@ -2,8 +2,10 @@
 	"name": "2048",
 	"version": "0.1",
 	"repo": "scharlatan/2048",
-	"description": "small C clone for the well known game 2048",
-	"keywords": ["game", "2048", "tiles", badcode"],
+	"description": "small c clone for the game 2048",
 	"license": "MIT",
-	"install": "make install"
+	"install": "make install",
+	"makefile": "makefile",
+	"keywords": ["game", "2048", "tiles", "badcode"],
+	"src": ["2048.c"]
 }
