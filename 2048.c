@@ -4,7 +4,7 @@
 
 #include "config.h"
 
-int shifted;
+int added;
 int field [FIELD_SIZE][FIELD_SIZE];
 
 void init(void);
@@ -24,10 +24,10 @@ int main(void)
 
 	do
 	{
-		shifted=0;
+		added=0;
 		shift_numbers(getchar());
 
-		if(shifted)
+		if(added)
 			fill_free();
 
 		display_field();
@@ -135,7 +135,7 @@ void shift(int* line)
 		for(j=i+1; j<=FIELD_SIZE-1; j++)
 			if(line[i]==line[j])
 			{
-				line[i]+=line[j], line[j]=0; shifted=1;
+				line[i]+=line[j], line[j]=0;
 				break;
 			}
 			else if(line[j]!=0||line[i]==0)
@@ -145,7 +145,7 @@ void shift(int* line)
 		for(j=i+1; j<=FIELD_SIZE-1&&line[i+1]==0; j++)
 			if(line[j]!=0)
 			{
-				line[i+1]=line[j]; line[j]=0; shifted=1;
+				line[i+1]=line[j]; line[j]=0; added=1;
 				break;
 			}
 }
