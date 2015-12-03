@@ -9,20 +9,22 @@ all those other 2048 clones in c out there.
 It is just for fun.
 
 Requirements
-============
+------------
 
 make for the installation, and a c compiler.
 I hope you are not surprised.
 
 Installation
-============
+------------
 
 It is simply
+
 	make install
+
 nothing more.
 
 License and Thanks
-==================
+------------------
 
 I nearly always use the MIT license, because I had the
 patience to read it.
