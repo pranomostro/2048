@@ -3,7 +3,7 @@
 	after every change of the configuration a recompile is needed.
 */
 
-const int FIELD_SIZE=4;
+#define FIELD_SIZE 4
 
 /*
 	The command for clearing the terminal window.
