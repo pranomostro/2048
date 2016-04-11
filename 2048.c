@@ -94,7 +94,7 @@ void display_field(void)
 
 void shift_numbers(char c)
 {
-	int i,j;
+	int i, j;
 	int line[FIELD_SIZE];
 
 	for(i=0; i<FIELD_SIZE; i++)
