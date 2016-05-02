@@ -19,13 +19,17 @@ int has_neighbours(int i, int j);
 
 int main(void)
 {
+	char c;
+
 	init();
 	display_field();
 
 	do
 	{
 		added=0;
-		shift_numbers(getchar());
+		if((c=getchar())=='\n')
+			continue;
+		shift_numbers(c);
 
 		if(added)
 			fill_free();
@@ -89,7 +93,6 @@ void display_field(void)
 		}
 		putchar('\n');
 	}
-	putchar('\n');
 }
 
 void shift_numbers(char c)
