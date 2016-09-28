@@ -38,7 +38,7 @@ int main(void)
 	}
 	while(game_over()==0);
 
-	printf("Game over, %s\n", game_over()==-1?"you won.":"you lost.");
+	printf("Game over, %s\n", game_over()==1?"you won.":"you lost.");
 
 	return 0;
 }
@@ -161,11 +161,11 @@ int game_over(void)
 		for(j=0; j<FIELD_SIZE; j++)
 		{
 			if(field[i][j]==2048)
-				return -1;
+				return 1;
 			if(field[i][j]==0||has_neighbours(i, j)==1)
 				return 0;
 		}
-	return 1;
+	return -1;
 }
 
 int has_neighbours(int i, int j)
