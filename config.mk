@@ -9,3 +9,4 @@ LDFLAGS=-s
 
 TARGET=2048
 OBJ=2048.o
+CONF=config.h config.mk
