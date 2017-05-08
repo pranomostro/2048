@@ -35,8 +35,7 @@ int main(void)
 			fill_free();
 
 		display_field();
-	}
-	while(game_over()==0);
+	} while(game_over()==0);
 
 	printf("Game over, %s\n", game_over()==1?"you won.":"you lost.");
 
@@ -64,8 +63,7 @@ void fill_free(void)
 	{
 		i=rand()%FIELD_SIZE;
 		j=rand()%FIELD_SIZE;
-	}
-	while(field[i][j]!=0);
+	} while(field[i][j]!=0);
 
 	field[i][j]=((rand()%4)==0 ? 4 : 2);
 }

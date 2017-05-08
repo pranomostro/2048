@@ -1,4 +1,4 @@
-#configure your installation
+#configuration makefile
 
 PREFIX=/usr/local
 
@@ -8,4 +8,4 @@ CFLAGS=-Wall -Wextra -pedantic -O2
 LDFLAGS=-s
 
 TARGET=2048
-OBJS=2048.o
+OBJ=2048.o

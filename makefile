@@ -1,16 +1,17 @@
 #makefile for a tiny 2048 clone
+
 include config.mk
 
 all: $(TARGET)
 
-$(TARGET): $(OBJS)
-	$(CC) $(LDFLAGS) $(OBJS) -o $(TARGET)
+$(TARGET): $(OBJ)
+	$(CC) $(LDFLAGS) $(OBJ) -o $(TARGET)
 
-%.o: %.c
+.c.o:
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -rf $(TARGET) $(OBJS)
+	rm -rf $(TARGET) $(OBJ)
 
 install: $(TARGET)
 	mkdir -p $(PREFIX)/bin $(PREFIX)/share/man/man1
