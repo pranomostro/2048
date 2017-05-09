@@ -1,12 +1,13 @@
-#configuration makefile
-
 PREFIX=/usr/local
 
 CC=cc
+AR=ar
+RANLIB=ranlib
 
-CFLAGS=-Wall -Wextra -pedantic -O2
+CFLAGS=-Wall -Wextra -std=c89 -pedantic -O2
 LDFLAGS=-s
 
-TARGET=2048
-OBJ=2048.o
-CONF=config.h config.mk
+BIN=2048
+OBJ=$(BIN:=.o)
+MAN=$(BIN:=.1)
+CONF=config.mk config.h
