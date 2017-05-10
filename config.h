@@ -16,8 +16,8 @@ const char* CLEAR="clear";
 
 enum keys
 {
-	UP='v',
-	LEFT='u',
-	DOWN='i',
-	RIGHT='a'
+	UP='w',
+	LEFT='a',
+	DOWN='s',
+	RIGHT='d'
 };

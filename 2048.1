@@ -1,18 +1,34 @@
-.TH 2048 1
-.SH NAME
-2048 \- a clone of the game
+.Dd May 10, 2017
+.Dt 2048 1
+.Os
 
-.SH SYNOPSIS
-2048
+.Sh 2048
+.Nm 2048
+.Nd clone of the game
 
-.SH DESCRIPTION
-2048 is a minimal clone of the game 2048. It ignores it's arguments.
-Shifting is done with "w" for "up", "a" for "left", "s" for "down"
-and "d" for "right" (if not changed in the configuration), followed by
-ENTER. Any arguments are ignored.
+.Sh SYNOPSIS
+.Nm
 
-.SH BUGS
-None known at the moment.
+.Sh DESCRIPTION
+.Nm
+is a minimal clone of the game 2048.
 
-.SH AUTHOR
-pranomostro (pranomestro@gmail.com)
+.Sh OPTIONS
+Command line arguments are ignored.
+.Pp
+Shifting the numbers is done with the following keys, followed by a newline:
+.Bl -tag -width Ds
+.It w
+Shift the numbers up.
+.It a
+Shift the numbers left.
+.It s
+Shift the numbers down.
+.It d
+Shift the numbers right.
+
+.Sh EXIT STATUS
+.Ex -std
+
+.Sh AUTHORS
+.An pranomostro Aq Mt pranomestro@gmail.com
