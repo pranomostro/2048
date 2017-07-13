@@ -17,30 +17,6 @@ void shift(int* line);
 int game_over(void);
 int has_neighbours(int i, int j);
 
-int main(void)
-{
-	char c;
-
-	init();
-	display_field();
-
-	do
-	{
-		added=0;
-		if((c=getchar())=='\n')
-			continue;
-		shift_numbers(c);
-
-		if(added)
-			fill_free();
-
-		display_field();
-	} while(game_over()==0);
-
-	printf("Game over, %s\n", game_over()==1?"you won.":"you lost.");
-
-	return 0;
-}
 
 void init(void)
 {
@@ -175,5 +151,30 @@ int has_neighbours(int i, int j)
 	||(j==FIELD_SIZE-1&&field[i][j-1]==field[i][j])
 	||(j>0&&j<FIELD_SIZE-1&&(field[i][j+1]==field[i][j]||field[i][j-1]==field[i][j])))
 		return 1;
+	return 0;
+}
+
+int main(void)
+{
+	char c;
+
+	init();
+	display_field();
+
+	do
+	{
+		added=0;
+		if((c=getchar())=='\n')
+			continue;
+		shift_numbers(c);
+
+		if(added)
+			fill_free();
+
+		display_field();
+	} while(game_over()==0);
+
+	printf("Game over, %s\n", game_over()==1?"you won.":"you lost.");
+
 	return 0;
 }
