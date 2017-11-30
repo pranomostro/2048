@@ -17,7 +17,6 @@ void shift(int* line);
 int game_over(void);
 int has_neighbours(int i, int j);
 
-
 void init(void)
 {
 	int i, j;
